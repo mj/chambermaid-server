@@ -1,0 +1,8 @@
+This is the server portion of the Chambermaid project.
+
+Essentially it can pass data between a FHEM backend and clients
+that can work with JSON. It is meant to be used with 
+chambermaid-frontend though.
+
+This code has some pretty rough edges and is probably not suited
+to be used anywhere but at my place.

@@ -82,7 +82,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-	'base_url'   => '/',
+	'base_url'   => '/chambermaid-server',
 ));
 
 /**
@@ -113,8 +113,34 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+/*
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',
 		'action'     => 'index',
 	));
+*/
+
+Route::set("rooms", "rooms")
+    ->defaults(array(
+    	"controller" => "rooms",
+    	"action"     => "index",
+    ));
+
+Route::set("devices_in_room", "devices/in/<room>")
+    ->defaults(array(
+        "controller" => "devices",
+        "action"     => "in_room",
+    ));
+
+Route::set("device_details", "devices/details/<device>")
+    ->defaults(array(
+        "controller" => "devices",
+        "action"     => "details",
+    ));
+
+Route::set("set_temperature", "set/temperature/for/<device>/to/<temperature>", array("temperature" => "\d+(\.\d+)?$"))
+    ->defaults(array(
+        "controller" => "temperature",
+        "action"     => "set",
+    ));
