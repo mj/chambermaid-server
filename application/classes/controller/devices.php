@@ -36,7 +36,7 @@ class Controller_Devices extends Controller_FHEM
 
         foreach ($response['Results'] as $list) {
             foreach ($list['devices'] as $device) {
-                if (isset($device['ATTR']['room']) && $room == $device['ATTR']['room'] && $device['TYPE'] != "FileLog") {
+                if (isset($device['ATTR']['room']) && $room == $device['ATTR']['room'] && $device['TYPE'] != "FileLog" && $device['TYPE'] != "CUL") {
                     $result[] = $this->parse_device($device);
                 }
             }
