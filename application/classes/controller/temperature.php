@@ -16,7 +16,6 @@ class Controller_Temperature extends Controller_FHEM
 
         $this->send($cmd);
 
-        $this->response->headers("Content-type", "application/json; charset=" . Kohana::$charset);
-        $this->response->body(json_encode(true));
+        $this->respond_with_json(true);
     }
 }

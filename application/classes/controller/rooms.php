@@ -23,7 +23,6 @@ class Controller_Rooms extends Controller_FHEM
             );
         }
 
-        $this->response->headers("Content-type", "application/json; charset=" . Kohana::$charset);
-        $this->response->body(json_encode($result));
+        $this->respond_with_json($result);
     }
 }

@@ -25,4 +25,16 @@ abstract class Controller_FHEM extends Controller
         fwrite($socket, $cmd);
         fclose($socket);        
     }
+
+    protected function respond_with_json($result)
+    {
+        $response = json_encode($result);
+
+        if (isset($_GET['callback'])) {
+            $response = $_GET['callback'] . "(" . $response . ");";
+        }
+
+        $this->response->headers("Content-type", "application/json; charset=" . Kohana::$charset);
+        $this->response->body($response);
+    }
 }

@@ -16,9 +16,8 @@ class Controller_Devices extends Controller_FHEM
         }
 
         $result = $this->parse_device($response['ResultSet']['Results']);
-        
-        $this->response->headers("Content-type", "application/json; charset=" . Kohana::$charset);
-        $this->response->body(json_encode($result));
+
+        $this->respond_with_json($result);
     }
 
     public function action_in_room()
@@ -42,8 +41,7 @@ class Controller_Devices extends Controller_FHEM
             }
         }
 
-        $this->response->headers("Content-type", "application/json; charset=" . Kohana::$charset);
-        $this->response->body(json_encode($result));
+        $this->respond_with_json($result);
     }
 
     protected function parse_device(array $device) {
